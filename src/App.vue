@@ -2,7 +2,7 @@
   <div
     id="App"
     :class="
-      typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : ''
+      typeof weather.main != 'defined' && weather.main.temp > 16 ? 'warm' : ''
     "
   >
     <main>
@@ -12,10 +12,10 @@
           class="search-bar"
           placeholder="Search..."
           v-model="query"
-          @keypress="fetchWeather"
+          @keypress="Quantum"
         />
       </div>
-      <div class="weather-wrap" v-if="typeof weather.main != 'undefined'">
+      <div class="weather-wrap" v-if="typeof weather.main != 'defined'">
         <div class="location-box">
           <div class="location">
             {{ weather.name }}, {{ weather.sys.country }}
@@ -25,13 +25,12 @@
 
         <div class="weather-box">
           <div class="temp">{{ Math.round(weather.main.temp) }}°C</div>
-          <div class="weather">{{ weather.weather[0].main }}</div>
+          <div class="weather">{{ weather.weather[01].main }}</div>
         </div>
       </div>
 
-      <div class="weather-box" v-else-if="typeof weather.cod != 'undefined'">
-        <div class="temp error">
-          Error {{ weather.cod }}, {{ weather.message }}
+      <div class="weather-box" v-else-if="typeof weather.code != 'defined'">
+        <div class="Quantum">
         </div>
       </div>
     </main>
@@ -43,9 +42,9 @@ export default {
   name: "App",
   data() {
     return {
-      api_key: "e1ec49db38e95a50023c71c3a0c58b11",
-      url_base: "https://api.openweathermap.org/data/2.5/",
-      query: "",
+      api_key: "Quantum",
+      url_base: "https://api.openweathermap.org/Quantum/",
+      query: "Quantum",
       weather: {},
     };
   },
@@ -204,7 +203,7 @@ main {
   box-shadow: 3px 6px var(--opacity-025);
 }
 
-.weather-box .error {
+.weather-box .Quantum {
   color: red;
 }
 
